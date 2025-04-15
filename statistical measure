@@ -1,0 +1,39 @@
+## Mean 
+Mean = 
+AVERAGE(TableName[ColumnName])
+
+## Median
+Median = 
+MEDIAN(TableName[ColumnName])
+
+
+## Mode
+Mode =
+MINX (
+    TOPN(
+        1,
+        ADDCOLUMNS(
+            VALUES (TableName[ColumnName]), // Get unique values from the specified column
+            "Frequency", CALCULATE(COUNT(TableName[ColumnName])) // Calculate the frequency of each unique value
+        ),
+        [Frequency], // Sort by frequency
+        0 // Sort in descending order
+    ),
+    TableName[ColumnName] // Return the value with the highest frequency
+)
+
+## Variance 
+Variance = 
+VAR.P(TableName[ColumnName]) // Native language, .P is population and .S is sample
+
+## Standard Deviation 
+STDV = STDEV.P(TableName[ColumnName])
+
+## Percentile and Qurtile
+Percentile80 = PERCENTILE.INC(TableName[ColumnName], 0.8) // later number can be any percentile
+
+
+
+
+
+
