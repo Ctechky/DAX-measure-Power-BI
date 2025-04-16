@@ -31,3 +31,4 @@ STDV = STDEV.P(TableName[ColumnName])
 
 ## Percentile and Qurtile
 Percentile80 = PERCENTILE.INC(TableName[ColumnName], 0.8) // later number can be any percentile
+
