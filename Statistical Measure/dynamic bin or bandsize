@@ -1,1 +1,22 @@
-
+Count of Items in Each Band = 
+VAR _minValue = [Min Value]
+VAR _maxValue = [Max Value]
+VAR _bandSize = [Band Size Value]
+VAR _ValueBandTable = GENERATESERIES(_minValue, _maxValue, _bandSize)
+VAR _currValue = SELECTEDVALUE('Value Band'[Value])
+VAR _bandHead = MAXX(
+    FILTER(
+        _ValueBandTable,
+        [Value] <= _currValue
+    ),
+    [Value]
+)
+VAR _bandTail = _bandHead + _bandSize
+RETURN
+IF(
+    _currValue = _bandHead,
+    CALCULATE(
+        COUNTROWS(DimTable),
+        'Value Band'[Value] >= _bandHead && 'Value Band'[Value] < _bandTail
+    )
+)
