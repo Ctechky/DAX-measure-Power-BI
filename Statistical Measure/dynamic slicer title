@@ -1,1 +1,22 @@
+DynamicTitle = 
+// Concatenate selected values from the slicer, ordered by a specified field
+VAR _selectedNames = 
+    CONCATENATEX(
+        SlicerTable, 
+        [SlicerField], 
+        ",", 
+        [OrderField], 
+        ASC
+    )
 
+// Check if the slicer is filtered and set the dynamic title accordingly
+VAR dynamicTitle = 
+    IF(
+        ISFILTERED(SlicerTable[SlicerField]), 
+        _selectedNames, 
+        "Default Title"
+    )
+
+// Return the dynamic title
+RETURN
+    dynamicTitle
