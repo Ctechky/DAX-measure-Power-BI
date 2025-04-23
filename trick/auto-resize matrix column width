@@ -1,0 +1,8 @@
+//Fixed Width  by creating a measure for each column, matrix value//
+AutoResizeWidth = REPT("85",3)
+turn on auto size width, turn on show on rows for value
+drag the measure in,
+turn auto width off, 
+drag out measure.
+
+
